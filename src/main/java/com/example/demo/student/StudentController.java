@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(path = "/")
 public class StudentController {
-	@Autowired
 	private final StudentService studentService;
 	
 	@Autowired
@@ -26,7 +25,7 @@ public class StudentController {
 		this.studentService = studentService;
 	}
 	
-	@GetMapping(path="/")
+	@GetMapping("/")
 	public List<Student> getStudents() {
 		return studentService.getStudents();
 	}
@@ -36,14 +35,14 @@ public class StudentController {
 		studentService.addNewStudent(student);
 	}
 	
-	@DeleteMapping(path="{studentId}")
-	public void deleteStudent(@PathVariable("studentId") Long studentId) {
+	@DeleteMapping("{Id}")
+	public void deleteStudent(@PathVariable("Id") Long studentId) {
 		studentService.deleteStudent(studentId);
 	}
 	
-	@PutMapping(path= "{studentId}")
+	@PutMapping("{Id}")
 	public void updateStudent(
-			@PathVariable("studentId") Long studentId,
+			@PathVariable("Id") Long studentId,
 			@RequestParam(required = false) String name,
 			@RequestParam(required = false) String email,
 			@RequestParam(required = false) @DateTimeFormat(pattern="yyyy-MM-dd") LocalDate dob) {

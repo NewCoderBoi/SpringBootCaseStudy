@@ -16,18 +16,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class StudentService {
 	
-	@Autowired
 	private final StudentRepository studentRepository;
-	@Autowired
-	private final StudentConfig studentConfig;
+//	private final StudentConfig studentConfig;
 //	private List<Student> studentList = new ArrayList<>(Arrays.asList(
 //			new Student(100L,"Debatra","fgh@fhj"),
 //			new Student(101L,"ksdgfkasdgkf","fgh@fhj"),
 //			new Student(102L,"dfhrtutu","fgh@fhj")));
 	
 	@Autowired
-	public StudentService(StudentConfig studentConfig, StudentRepository studentRepository) {
-		this.studentConfig = studentConfig;
+	public StudentService(StudentRepository studentRepository) {
+//		this.studentConfig = studentConfig;
 		this.studentRepository = studentRepository;
 	}
 	
@@ -37,6 +35,7 @@ public class StudentService {
 //	}
 	
 	public List<Student> getStudents() {
+//		return studentRepository.findAll();
 		return studentRepository.findAll();
 	}
 	

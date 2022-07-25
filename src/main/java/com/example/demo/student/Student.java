@@ -3,6 +3,7 @@ package com.example.demo.student;
 import java.time.LocalDate;
 import java.time.Period;
 
+import javax.persistence.Cacheable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,19 +14,18 @@ import javax.persistence.Transient;
 
 
 @Entity
-@Table
-public class Student implements Comparable<Student> {
+public class Student {
 	@Id
-	@SequenceGenerator(
-			name = "student_sequence",
-			sequenceName = "student_sequence",
-			allocationSize = 1
-	)
-	
-	@GeneratedValue(
-			strategy = GenerationType.SEQUENCE,
-			generator = "student_sequence"
-	)
+//	@SequenceGenerator(
+//			name = "student_sequence",
+//			sequenceName = "student_sequence",
+//			allocationSize = 1
+//	)
+//	
+//	@GeneratedValue(
+//			strategy = GenerationType.SEQUENCE,
+//			generator = "student_sequence"
+//	)
 	private Long id;
 	private String name;
 	private String email;
@@ -61,6 +61,7 @@ public class Student implements Comparable<Student> {
 	public void setId(Long id) {
 		this.id = id;
 	}
+	
 	public String getName() {
 		return name;
 	}
@@ -91,10 +92,6 @@ public class Student implements Comparable<Student> {
 	@Override
 	public String toString() {
 		return "Student [id=" + id + ", name=" + name + ", email=" + email + ", dob=" + dob + ", age=" + age + "]";
-	}
-	@Override
-	public int compareTo(Student s) {
-		return this.age-s.getAge();
 	}
 	
 	
